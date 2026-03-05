@@ -1,0 +1,2 @@
+accuracy,precision_weighted,recall_weighted,f1_weighted,n_test,n_classes,max_len,model
+0.9563953488372093,0.960869673749259,0.9563953488372093,0.9570593561158269,344,10,512,hybrid_cnn_feats

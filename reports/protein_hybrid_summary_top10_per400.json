@@ -1,0 +1,54 @@
+{
+  "seed": 42,
+  "device": "cpu",
+  "data": {
+    "seq_csv": "/Users/saturnine/Projects/bio-seq-lm-capstone/data/processed/protein_uniprot_pfam_top10_per400.csv",
+    "feat_csv": "/Users/saturnine/Projects/bio-seq-lm-capstone/data/processed/protein_features_baseline_top10_per400.csv",
+    "n_rows": 2293,
+    "n_features": 176,
+    "classes": [
+      "PF00001",
+      "PF00046",
+      "PF00069",
+      "PF00071",
+      "PF00076",
+      "PF00096",
+      "PF01352",
+      "PF07686",
+      "PF12796",
+      "PF13853"
+    ],
+    "max_len": 512,
+    "splits": {
+      "train": 1605,
+      "val": 344,
+      "test": 344
+    }
+  },
+  "training": {
+    "epochs_ran": 25,
+    "best_val_acc": 0.9854651162790697,
+    "lr": 0.001,
+    "weight_decay": 0.0001,
+    "batch_size": 64,
+    "patience": 5
+  },
+  "test_metrics": {
+    "accuracy": 0.9563953488372093,
+    "precision_weighted": 0.960869673749259,
+    "recall_weighted": 0.9563953488372093,
+    "f1_weighted": 0.9570593561158269,
+    "n_test": 344,
+    "n_classes": 10,
+    "max_len": 512,
+    "model": "hybrid_cnn_feats"
+  },
+  "artifacts": {
+    "model_path": "/Users/saturnine/Projects/bio-seq-lm-capstone/models/protein/hybrid_cnn_feats/hybrid_top10_per400.pt",
+    "test_csv": "/Users/saturnine/Projects/bio-seq-lm-capstone/reports/protein_hybrid_test_results_top10_per400.csv",
+    "summary_json": "/Users/saturnine/Projects/bio-seq-lm-capstone/reports/protein_hybrid_summary_top10_per400.json",
+    "fig_loss": "/Users/saturnine/Projects/bio-seq-lm-capstone/reports/figures/protein_hybrid_loss_top10_per400.png",
+    "fig_acc": "/Users/saturnine/Projects/bio-seq-lm-capstone/reports/figures/protein_hybrid_acc_top10_per400.png",
+    "fig_cm": "/Users/saturnine/Projects/bio-seq-lm-capstone/reports/figures/cm_protein_hybrid_top10_per400.png"
+  }
+}

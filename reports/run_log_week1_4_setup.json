@@ -1,0 +1,33 @@
+{
+  "timestamp": "2026-02-06T21:12:38.760546",
+  "seed": 42,
+  "config": {
+    "project": {
+      "random_seed": 42
+    },
+    "dna": {
+      "organism": "human",
+      "genome_build": "GRCh38",
+      "seq_length_bp": 200,
+      "n_pos": 2000,
+      "n_neg": 2000
+    },
+    "protein": {
+      "organism": "human",
+      "max_len_aa": 1024,
+      "n_families": 10,
+      "per_family": 400
+    }
+  },
+  "env": {
+    "python_version": "3.10.19",
+    "platform": "macOS-26.2-arm64-arm-64bit",
+    "cwd": "/Users/saturnine/Projects/bio-seq-lm-capstone/notebooks",
+    "root": "/Users/saturnine/Projects/bio-seq-lm-capstone",
+    "numpy": "2.2.5",
+    "pandas": "2.3.3",
+    "sklearn": "1.7.2",
+    "torch": "2.10.0",
+    "transformers": "5.1.0"
+  }
+}

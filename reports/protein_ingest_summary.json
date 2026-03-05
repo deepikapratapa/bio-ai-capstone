@@ -1,0 +1,52 @@
+{
+  "n_raw": 19021,
+  "n_clean": 16802,
+  "n_sampled": 2293,
+  "n_families": 10,
+  "top_families_selected": [
+    "PF13853",
+    "PF01352",
+    "PF07686",
+    "PF00001",
+    "PF00069",
+    "PF00096",
+    "PF00046",
+    "PF00071",
+    "PF00076",
+    "PF12796"
+  ],
+  "family_counts": {
+    "PF13853": 400,
+    "PF01352": 350,
+    "PF07686": 309,
+    "PF00001": 287,
+    "PF00069": 203,
+    "PF00096": 194,
+    "PF00046": 187,
+    "PF00071": 125,
+    "PF00076": 121,
+    "PF12796": 117
+  },
+  "families": [
+    "PF13853",
+    "PF01352",
+    "PF07686",
+    "PF00001",
+    "PF00069",
+    "PF00096",
+    "PF00046",
+    "PF00071",
+    "PF00076",
+    "PF12796"
+  ],
+  "max_len_aa": 1024,
+  "per_family_target": 400,
+  "sampling_rule": "top_n_families_by_frequency; per_family = min(PER_FAM, available)",
+  "seed": 42,
+  "uniprot_query": "reviewed:true AND organism_id:9606 AND database:pfam",
+  "dedup": {
+    "removed_duplicate_sequence_family": 16,
+    "dup_accessions_after": 0,
+    "dup_sequence_family_after": 0
+  }
+}

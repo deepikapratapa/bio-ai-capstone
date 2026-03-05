@@ -1,0 +1,2 @@
+model,roc_auc,pr_auc,accuracy,precision,recall,f1,n_test
+seq_cnn,0.826375,0.8370632258305786,0.75,0.7525252525252525,0.745,0.7487437185929648,800

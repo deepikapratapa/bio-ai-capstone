@@ -1,0 +1,39 @@
+{
+  "task": "protein_pfam_family_classification",
+  "feature_file": "/Users/saturnine/Projects/bio-seq-lm-capstone/data/processed/protein_features_baseline_top10_per400.csv",
+  "n_rows": 2293,
+  "n_classes": 10,
+  "classes": [
+    "PF00001",
+    "PF00046",
+    "PF00069",
+    "PF00071",
+    "PF00076",
+    "PF00096",
+    "PF01352",
+    "PF07686",
+    "PF12796",
+    "PF13853"
+  ],
+  "feature_dim": 176,
+  "train_size": 1834,
+  "test_size": 459,
+  "cv_results_csv": "/Users/saturnine/Projects/bio-seq-lm-capstone/reports/protein_baseline_cv_results_top10_per400.csv",
+  "test_results_csv": "/Users/saturnine/Projects/bio-seq-lm-capstone/reports/protein_baseline_test_results_top10_per400.csv",
+  "models_dir": "/Users/saturnine/Projects/bio-seq-lm-capstone/models/protein/baselines",
+  "saved_models": {
+    "logreg": "/Users/saturnine/Projects/bio-seq-lm-capstone/models/protein/baselines/logreg_top10_per400.pkl",
+    "linear_svm_calibrated": "/Users/saturnine/Projects/bio-seq-lm-capstone/models/protein/baselines/linear_svm_calibrated_top10_per400.pkl",
+    "random_forest": "/Users/saturnine/Projects/bio-seq-lm-capstone/models/protein/baselines/random_forest_top10_per400.pkl",
+    "grad_boost": "/Users/saturnine/Projects/bio-seq-lm-capstone/models/protein/baselines/grad_boost_top10_per400.pkl",
+    "xgboost": "/Users/saturnine/Projects/bio-seq-lm-capstone/models/protein/baselines/xgboost_top10_per400.pkl"
+  },
+  "confusion_matrices": {
+    "logreg": "/Users/saturnine/Projects/bio-seq-lm-capstone/reports/figures/cm_logreg_top10_per400.png",
+    "linear_svm_calibrated": "/Users/saturnine/Projects/bio-seq-lm-capstone/reports/figures/cm_linear_svm_calibrated_top10_per400.png",
+    "random_forest": "/Users/saturnine/Projects/bio-seq-lm-capstone/reports/figures/cm_random_forest_top10_per400.png",
+    "grad_boost": "/Users/saturnine/Projects/bio-seq-lm-capstone/reports/figures/cm_grad_boost_top10_per400.png",
+    "xgboost": "/Users/saturnine/Projects/bio-seq-lm-capstone/reports/figures/cm_xgboost_top10_per400.png"
+  },
+  "seed": 42
+}

@@ -1,0 +1,40 @@
+{
+  "task": "promoter_vs_nonpromoter",
+  "organism": "human",
+  "genome_build": "GRCh38",
+  "seq_length_bp": 200,
+  "n_total": 4000,
+  "split": {
+    "train": 2720,
+    "val": 480,
+    "test": 800
+  },
+  "metrics_test": {
+    "roc_auc": 0.826375,
+    "pr_auc": 0.8370632258305786,
+    "accuracy": 0.75,
+    "precision": 0.7525252525252525,
+    "recall": 0.745,
+    "f1": 0.7487437185929648,
+    "n_test": 800
+  },
+  "files": {
+    "dataset": "/Users/saturnine/Projects/bio-seq-lm-capstone/data/processed/dna_promoter_vs_nonpromoter_len200_pos2000_neg2000.csv",
+    "weights": "/Users/saturnine/Projects/bio-seq-lm-capstone/models/dna/sequence_cnn/cnn_len200.pt",
+    "history_csv": "/Users/saturnine/Projects/bio-seq-lm-capstone/reports/dna_seq_cnn_history_len200.csv",
+    "test_results_csv": "/Users/saturnine/Projects/bio-seq-lm-capstone/reports/dna_seq_cnn_test_results_len200.csv",
+    "fig_loss": "/Users/saturnine/Projects/bio-seq-lm-capstone/reports/figures/dna_seq_cnn_loss_len200.png",
+    "fig_val_auc": "/Users/saturnine/Projects/bio-seq-lm-capstone/reports/figures/dna_seq_cnn_val_auc_len200.png",
+    "fig_roc": "/Users/saturnine/Projects/bio-seq-lm-capstone/reports/figures/roc_seq_cnn_len200.png",
+    "fig_pr": "/Users/saturnine/Projects/bio-seq-lm-capstone/reports/figures/pr_seq_cnn_len200.png",
+    "fig_cm": "/Users/saturnine/Projects/bio-seq-lm-capstone/reports/figures/cm_seq_cnn_len200.png"
+  },
+  "seed": 42,
+  "env": {
+    "python_version": "3.10.19",
+    "platform": "macOS-26.2-arm64-arm-64bit",
+    "numpy": "2.2.5",
+    "pandas": "2.3.3",
+    "torch": "2.10.0"
+  }
+}

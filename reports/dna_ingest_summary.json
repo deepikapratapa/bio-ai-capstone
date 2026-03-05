@@ -1,0 +1,22 @@
+{
+  "gtf_file": "/Users/saturnine/Projects/bio-seq-lm-capstone/data/raw/Homo_sapiens.GRCh38.115.gtf.gz",
+  "gtf_name": "Homo_sapiens.GRCh38.115.gtf.gz",
+  "organism": "human",
+  "genome_build": "GRCh38",
+  "seq_length_bp": 200,
+  "n_pos": 2000,
+  "n_neg": 2000,
+  "pos_candidates_total": 78654,
+  "neg_sampling_tries": 2014,
+  "outputs": {
+    "pos_candidates_csv": "/Users/saturnine/Projects/bio-seq-lm-capstone/data/raw/dna_promoter_candidates_len200_pos2000.csv",
+    "neg_candidates_csv": "/Users/saturnine/Projects/bio-seq-lm-capstone/data/raw/dna_negative_candidates_len200_neg2000.csv",
+    "processed_dataset_csv": "/Users/saturnine/Projects/bio-seq-lm-capstone/data/processed/dna_promoter_vs_nonpromoter_len200_pos2000_neg2000.csv"
+  },
+  "validation": {
+    "bad_length": 0,
+    "bad_characters": 0,
+    "allowed_characters": "ACGTN"
+  },
+  "seed": 42
+}

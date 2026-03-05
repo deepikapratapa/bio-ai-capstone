@@ -1,0 +1,15 @@
+project:
+  random_seed: 42
+
+dna:
+  organism: human
+  genome_build: GRCh38
+  seq_length_bp: 200
+  n_pos: 2000
+  n_neg: 2000
+
+protein:
+  organism: human
+  max_len_aa: 1024
+  n_families: 10
+  per_family: 400

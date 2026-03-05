@@ -1,0 +1,38 @@
+{
+  "dataset_path": "/Users/saturnine/Projects/bio-seq-lm-capstone/data/processed/protein_uniprot_pfam_top10_per400.csv",
+  "n_rows": 2293,
+  "n_families": 10,
+  "family_counts": {
+    "PF13853": 400,
+    "PF01352": 350,
+    "PF07686": 309,
+    "PF00001": 287,
+    "PF00069": 203,
+    "PF00096": 194,
+    "PF00046": 187,
+    "PF00071": 125,
+    "PF00076": 121,
+    "PF12796": 117
+  },
+  "length_min": 73,
+  "length_median": 346.0,
+  "length_max": 1023,
+  "n_mismatch_len": 0,
+  "n_with_nonstandard_aa": 0,
+  "duplicates": {
+    "dup_accessions": 0,
+    "dup_sequence_family": 0
+  },
+  "env": {
+    "python_version": "3.10.19",
+    "platform": "macOS-26.2-arm64-arm-64bit",
+    "pandas": "2.3.3",
+    "numpy": "2.2.5"
+  },
+  "figures": {
+    "protein_family_counts": "/Users/saturnine/Projects/bio-seq-lm-capstone/reports/figures/protein_family_counts.png",
+    "protein_length_hist": "/Users/saturnine/Projects/bio-seq-lm-capstone/reports/figures/protein_length_hist.png",
+    "protein_length_by_family": "/Users/saturnine/Projects/bio-seq-lm-capstone/reports/figures/protein_length_by_family.png",
+    "protein_nonstandard_aa_hist": "/Users/saturnine/Projects/bio-seq-lm-capstone/reports/figures/protein_nonstandard_aa_hist.png"
+  }
+}

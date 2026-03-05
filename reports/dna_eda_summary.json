@@ -1,0 +1,31 @@
+{
+  "dataset_path": "/Users/saturnine/Projects/bio-seq-lm-capstone/data/processed/dna_promoter_vs_nonpromoter_len200_pos2000_neg2000.csv",
+  "n_rows": 4000,
+  "n_pos": 2000,
+  "n_neg": 2000,
+  "seq_length": 200,
+  "invalid_char_sequences": 0,
+  "gc_content": {
+    "mean": 0.4546125,
+    "std": 0.1519306439593201
+  },
+  "cpg_density": {
+    "mean": 0.023516250000000002,
+    "std": 0.03384399636508742
+  },
+  "duplicates": {
+    "dup_region_id": 0,
+    "dup_sequence_label": 155
+  },
+  "env": {
+    "python_version": "3.10.19",
+    "platform": "macOS-26.2-arm64-arm-64bit",
+    "pandas": "2.3.3",
+    "numpy": "2.2.5"
+  },
+  "figures": {
+    "label_distribution": "/Users/saturnine/Projects/bio-seq-lm-capstone/reports/figures/dna_label_distribution.png",
+    "gc_content_by_label": "/Users/saturnine/Projects/bio-seq-lm-capstone/reports/figures/dna_gc_content_by_label.png",
+    "cpg_density_by_label": "/Users/saturnine/Projects/bio-seq-lm-capstone/reports/figures/dna_cpg_density_by_label.png"
+  }
+}

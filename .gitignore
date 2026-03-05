@@ -1,0 +1,54 @@
+# -----------------------------
+# Python / Jupyter / OS junk
+# -----------------------------
+__pycache__/
+*.py[cod]
+*.so
+*.egg-info/
+.ipynb_checkpoints/
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# -----------------------------
+# Logs / temp
+# -----------------------------
+*.log
+*.tmp
+*.swp
+*.bak
+
+# -----------------------------
+# Data (keep structure, not blobs)
+# -----------------------------
+data/raw/
+data/interim/
+
+# Processed data artifacts (can be large)
+data/processed/*.parquet
+data/processed/*.npy
+
+# If processed CSVs become too large, uncomment:
+# data/processed/*.csv
+
+# -----------------------------
+# Model artifacts (too large for GitHub)
+# -----------------------------
+models/
+*.pt
+*.pth
+*.pkl
+*.joblib
+
+# -----------------------------
+# Reports / figures
+# -----------------------------
+reports/figures/
+
+# -----------------------------
+# Environment / secrets
+# -----------------------------
+.env
+.env.*
+*.key

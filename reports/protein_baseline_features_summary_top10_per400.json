@@ -1,0 +1,87 @@
+{
+  "input_dataset": "/Users/saturnine/Projects/bio-seq-lm-capstone/data/processed/protein_uniprot_pfam_top10_per400.csv",
+  "output_features_csv": "/Users/saturnine/Projects/bio-seq-lm-capstone/data/processed/protein_features_baseline_top10_per400.csv",
+  "n_rows": 2293,
+  "n_families": 10,
+  "feature_count_excluding_meta": 36,
+  "families": [
+    "PF13853",
+    "PF01352",
+    "PF07686",
+    "PF00001",
+    "PF00069",
+    "PF00096",
+    "PF00046",
+    "PF00071",
+    "PF00076",
+    "PF12796"
+  ],
+  "family_counts": {
+    "PF13853": 400,
+    "PF01352": 350,
+    "PF07686": 309,
+    "PF00001": 287,
+    "PF00069": 203,
+    "PF00096": 194,
+    "PF00046": 187,
+    "PF00071": 125,
+    "PF00076": 121,
+    "PF12796": 117
+  },
+  "max_len_aa_config": 1024,
+  "seed": 42,
+  "features": {
+    "aa_composition_20": [
+      "frac_A",
+      "frac_C",
+      "frac_D",
+      "frac_E",
+      "frac_F",
+      "frac_G",
+      "frac_H",
+      "frac_I",
+      "frac_K",
+      "frac_L",
+      "frac_M",
+      "frac_N",
+      "frac_P",
+      "frac_Q",
+      "frac_R",
+      "frac_S",
+      "frac_T",
+      "frac_V",
+      "frac_W",
+      "frac_Y"
+    ],
+    "grouped_composition": [
+      "frac_hydrophobic",
+      "frac_polar",
+      "frac_positive",
+      "frac_negative",
+      "frac_aromatic",
+      "frac_small",
+      "frac_proline",
+      "frac_glycine"
+    ],
+    "charge_proxy": [
+      "pos_charge_count",
+      "neg_charge_count",
+      "net_charge_proxy",
+      "net_charge_proxy_norm"
+    ],
+    "aromaticity_entropy_complexity": [
+      "aromatic_frac",
+      "aa_entropy",
+      "max_homopolymer_run"
+    ],
+    "hydropathy": [
+      "gravy_kd"
+    ]
+  },
+  "env": {
+    "python_version": "3.10.19",
+    "platform": "macOS-26.2-arm64-arm-64bit",
+    "pandas": "2.3.3",
+    "numpy": "2.2.5"
+  }
+}

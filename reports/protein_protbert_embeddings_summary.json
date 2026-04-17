@@ -1,0 +1,66 @@
+{
+  "notebook": "19_protein_protbert_embeddings",
+  "model": "Rostlab/prot_bert",
+  "model_size": "~420M parameters (BERT-large)",
+  "pretrain_data": "UniRef100 (~217M sequences)",
+  "tokenizer_type": "single amino acid, space-separated",
+  "pooling_strategy": "mean over body tokens (CLS and SEP excluded)",
+  "rare_aa_handling": "U, Z, O, B replaced with X before tokenization",
+  "embedding_dim": 1024,
+  "n_sequences": 2293,
+  "n_families": 10,
+  "label_encoder_classes": [
+    "PF00001",
+    "PF00046",
+    "PF00069",
+    "PF00071",
+    "PF00076",
+    "PF00096",
+    "PF01352",
+    "PF07686",
+    "PF12796",
+    "PF13853"
+  ],
+  "label_counts": {
+    "0": 287,
+    "1": 187,
+    "2": 203,
+    "3": 125,
+    "4": 121,
+    "5": 194,
+    "6": 350,
+    "7": 309,
+    "8": 117,
+    "9": 400
+  },
+  "family_counts": {
+    "PF13853": 400,
+    "PF01352": 350,
+    "PF07686": 309,
+    "PF00001": 287,
+    "PF00069": 203,
+    "PF00096": 194,
+    "PF00046": 187,
+    "PF00071": 125,
+    "PF00076": 121,
+    "PF12796": 117
+  },
+  "max_token_length": 1024,
+  "batch_size_used": 8,
+  "device": "cuda",
+  "seed": 42,
+  "embedding_stats": {
+    "mean": 0.0011693687411025167,
+    "std": 0.10490869730710983,
+    "min": -2.0089612007141113,
+    "max": 5.207705020904541,
+    "any_nan": false,
+    "any_inf": false
+  },
+  "output_files": {
+    "embeddings": "/home/dpratapa/Capstone/data/processed/protein_protbert_embeddings_top10_per400.npy",
+    "labels": "/home/dpratapa/Capstone/data/processed/protein_protbert_labels_top10_per400.npy",
+    "family_names": "/home/dpratapa/Capstone/data/processed/protein_protbert_family_names_top10_per400.npy"
+  },
+  "timestamp": "2026-03-25T16:33:33.909528"
+}

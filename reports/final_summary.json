@@ -1,0 +1,97 @@
+{
+  "dna": {
+    "task": "promoter vs non-promoter (binary, 200 bp, human GRCh38)",
+    "n_sequences": 4000,
+    "best_model": {
+      "paradigm": "NT-500M",
+      "model": "xgboost",
+      "roc_auc": 0.8507,
+      "accuracy": 0.76875
+    },
+    "paradigm_summary": [
+      {
+        "paradigm": "Baseline",
+        "model": "random_forest",
+        "accuracy": 0.7475,
+        "f1": 0.7430025445292621,
+        "roc_auc": 0.8373843750000001,
+        "pr_auc": 0.8471250524056608
+      },
+      {
+        "paradigm": "CNN",
+        "model": "seq_cnn",
+        "accuracy": 0.75,
+        "f1": 0.7487437185929648,
+        "roc_auc": 0.826375,
+        "pr_auc": 0.8370632258305786
+      },
+      {
+        "paradigm": "Hybrid",
+        "model": "cnn+features",
+        "accuracy": 0.6975,
+        "f1": 0.740343347639485,
+        "roc_auc": 0.8316875000000001,
+        "pr_auc": 0.8466018777391506
+      },
+      {
+        "paradigm": "DNABERT-2",
+        "model": "xgboost",
+        "accuracy": 0.75625,
+        "f1": 0.7553324968632371,
+        "roc_auc": 0.8462500000000001,
+        "pr_auc": 0.8532057755621181
+      },
+      {
+        "paradigm": "NT-500M",
+        "model": "xgboost",
+        "accuracy": 0.76875,
+        "f1": 0.7672955974842768,
+        "roc_auc": 0.8507,
+        "pr_auc": 0.8543654689618766
+      }
+    ]
+  },
+  "protein": {
+    "task": "Pfam family classification (10-class, human UniProt)",
+    "n_sequences": 2293,
+    "best_model": {
+      "paradigm": "ProtBERT",
+      "model": "linear_svm_calibrated",
+      "accuracy": 0.9912854030501088,
+      "f1_macro": 0.9924099727112172
+    },
+    "paradigm_summary": [
+      {
+        "paradigm": "Baseline",
+        "model": "xgboost",
+        "accuracy": 0.9237472766884532,
+        "f1_macro": null
+      },
+      {
+        "paradigm": "CNN",
+        "model": "sequence_cnn",
+        "accuracy": 0.9244186046511628,
+        "f1_macro": null
+      },
+      {
+        "paradigm": "Hybrid",
+        "model": "hybrid_cnn_feats",
+        "accuracy": 0.9563953488372092,
+        "f1_macro": null
+      },
+      {
+        "paradigm": "ESM-2",
+        "model": "linear_svm",
+        "accuracy": 0.9869281045751634,
+        "f1_macro": 0.9890405140836176
+      },
+      {
+        "paradigm": "ProtBERT",
+        "model": "linear_svm_calibrated",
+        "accuracy": 0.9912854030501088,
+        "f1_macro": 0.9924099727112172
+      }
+    ]
+  },
+  "timestamp": "2026-03-25T16:55:52.954060"
+}

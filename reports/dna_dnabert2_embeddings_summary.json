@@ -1,0 +1,32 @@
+{
+  "notebook": "15_dna_dnabert2_embeddings",
+  "model": "zhihan1996/DNABERT-2-117M",
+  "patches": [
+    "bert_layers.py: pad_token_id getattr fallback",
+    "bert_layers.py: rebuild_alibi_tensor device=cpu + clone",
+    "runtime: p_dropout=1e-9 to disable Triton flash_attn (trans_b removed in Triton 2.x)"
+  ],
+  "pooling": "mean over outputs[0] (mask-weighted)",
+  "embedding_dim": 768,
+  "n_sequences": 4000,
+  "label_counts": {
+    "0": 2000,
+    "1": 2000
+  },
+  "seq_length_bp": 200,
+  "batch_size": 32,
+  "device": "cuda",
+  "seed": 42,
+  "stats": {
+    "mean": 0.003702780930325389,
+    "std": 0.09741873294115067,
+    "min": -5.661664962768555,
+    "max": 3.347414970397949
+  },
+  "files": {
+    "embeddings": "/home/dpratapa/Capstone/data/processed/dna_dnabert2_embeddings_len200_pos2000_neg2000.npy",
+    "labels": "/home/dpratapa/Capstone/data/processed/dna_dnabert2_labels_len200_pos2000_neg2000.npy",
+    "ids": "/home/dpratapa/Capstone/data/processed/dna_dnabert2_ids_len200_pos2000_neg2000.npy"
+  },
+  "timestamp": "2026-03-25T15:46:14.983623"
+}

@@ -1,0 +1,94 @@
+{
+  "notebook": "20_protein_protbert_models",
+  "embedding_source": "19_protein_protbert_embeddings",
+  "model": "Rostlab/prot_bert",
+  "embedding_dim": 1024,
+  "n_train": 1834,
+  "n_test": 459,
+  "n_classes": 10,
+  "class_names": [
+    "PF00001",
+    "PF00046",
+    "PF00069",
+    "PF00071",
+    "PF00076",
+    "PF00096",
+    "PF01352",
+    "PF07686",
+    "PF12796",
+    "PF13853"
+  ],
+  "cv_folds": 5,
+  "seed": 42,
+  "best_model": {
+    "name": "logreg",
+    "roc_auc_ovr": 0.9993888552577062,
+    "f1_macro": 0.9833654093497856,
+    "accuracy": 0.9825708061002179
+  },
+  "all_results": [
+    {
+      "model": "logreg",
+      "accuracy": 0.9825708061002179,
+      "precision_macro": 0.9865389198722532,
+      "recall_macro": 0.9810285086147156,
+      "f1_macro": 0.9833654093497856,
+      "roc_auc_ovr": 0.9993888552577062,
+      "cv_accuracy_mean": 0.9885513914325278,
+      "cv_accuracy_std": 0.0031730433282534058,
+      "cv_f1_macro_mean": 0.9865508548674707,
+      "cv_f1_macro_std": 0.0044960094159987645,
+      "cv_roc_auc_mean": 0.9993587976246585,
+      "cv_roc_auc_std": 0.0008216647871489427
+    },
+    {
+      "model": "linear_svm_calibrated",
+      "accuracy": 0.9912854030501089,
+      "precision_macro": 0.9946558430576694,
+      "recall_macro": 0.9904449542380578,
+      "f1_macro": 0.9924099727112173,
+      "roc_auc_ovr": 0.9982124194150217,
+      "cv_accuracy_mean": 0.992911064457051,
+      "cv_accuracy_std": 0.0021820870963745855,
+      "cv_f1_macro_mean": 0.9918816103831098,
+      "cv_f1_macro_std": 0.0035790092565341353,
+      "cv_roc_auc_mean": 0.9994486664516622,
+      "cv_roc_auc_std": 0.0009359084873593311
+    },
+    {
+      "model": "random_forest",
+      "accuracy": 0.9651416122004357,
+      "precision_macro": 0.9590812292959185,
+      "recall_macro": 0.9514536705511218,
+      "f1_macro": 0.9545788675620097,
+      "roc_auc_ovr": 0.9982457919699002,
+      "cv_accuracy_mean": 0.9460207560935663,
+      "cv_accuracy_std": 0.009014017353546127,
+      "cv_f1_macro_mean": 0.9316810866531217,
+      "cv_f1_macro_std": 0.011447497535458224,
+      "cv_roc_auc_mean": 0.9959476241261841,
+      "cv_roc_auc_std": 0.0014825273052007505
+    },
+    {
+      "model": "xgboost",
+      "accuracy": 0.9847494553376906,
+      "precision_macro": 0.9852243618870581,
+      "recall_macro": 0.9818088876559642,
+      "f1_macro": 0.9833409276522629,
+      "roc_auc_ovr": 0.9973020449268247,
+      "cv_accuracy_mean": 0.9618349935230267,
+      "cv_accuracy_std": 0.014099058055695942,
+      "cv_f1_macro_mean": 0.9530492951242129,
+      "cv_f1_macro_std": 0.01848171406120286,
+      "cv_roc_auc_mean": 0.9978978389416483,
+      "cv_roc_auc_std": 0.0011732244071730633
+    }
+  ],
+  "model_files": {
+    "logreg": "/home/dpratapa/Capstone/models/protein/protbert/logreg.pkl",
+    "linear_svm_calibrated": "/home/dpratapa/Capstone/models/protein/protbert/linear_svm_calibrated.pkl",
+    "random_forest": "/home/dpratapa/Capstone/models/protein/protbert/random_forest.pkl",
+    "xgboost": "/home/dpratapa/Capstone/models/protein/protbert/xgboost.pkl"
+  },
+  "timestamp": "2026-03-25T16:47:15.779306"
+}

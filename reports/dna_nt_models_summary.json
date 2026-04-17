@@ -1,0 +1,85 @@
+{
+  "notebook": "18_dna_nt_models",
+  "embedding_source": "17_dna_nt_embeddings",
+  "model": "InstaDeepAI/nucleotide-transformer-500m-human-ref",
+  "embedding_dim": 1280,
+  "n_train": 3200,
+  "n_test": 800,
+  "cv_folds": 5,
+  "seed": 42,
+  "best_model": {
+    "name": "xgboost",
+    "roc_auc": 0.8507,
+    "f1": 0.7672955974842768,
+    "accuracy": 0.76875
+  },
+  "all_results": [
+    {
+      "model": "logreg",
+      "accuracy": 0.67,
+      "precision": 0.6847826086956522,
+      "recall": 0.63,
+      "f1": 0.65625,
+      "roc_auc": 0.7292812499999999,
+      "pr_auc": 0.7207850743705155,
+      "cv_accuracy_mean": 0.6575,
+      "cv_accuracy_std": 0.016723860200324545,
+      "cv_f1_mean": 0.6598363791674766,
+      "cv_f1_std": 0.01958780447365044,
+      "cv_roc_auc_mean": 0.723849609375,
+      "cv_roc_auc_std": 0.018676795368630587
+    },
+    {
+      "model": "linear_svm_calibrated",
+      "accuracy": 0.67875,
+      "precision": 0.6876640419947506,
+      "recall": 0.655,
+      "f1": 0.6709346991037132,
+      "roc_auc": 0.7294187500000001,
+      "pr_auc": 0.748508730762015,
+      "cv_accuracy_mean": 0.6790625,
+      "cv_accuracy_std": 0.017133437702341006,
+      "cv_f1_mean": 0.6835670607602855,
+      "cv_f1_std": 0.01754679314624466,
+      "cv_roc_auc_mean": 0.7450800781249999,
+      "cv_roc_auc_std": 0.02125813891557325
+    },
+    {
+      "model": "random_forest",
+      "accuracy": 0.75875,
+      "precision": 0.7660668380462725,
+      "recall": 0.745,
+      "f1": 0.7553865652724968,
+      "roc_auc": 0.84605,
+      "pr_auc": 0.8484436907768196,
+      "cv_accuracy_mean": 0.7406250000000001,
+      "cv_accuracy_std": 0.017314868971493817,
+      "cv_f1_mean": 0.7390825638889835,
+      "cv_f1_std": 0.02000215739785435,
+      "cv_roc_auc_mean": 0.8227841796875,
+      "cv_roc_auc_std": 0.018238130341291764
+    },
+    {
+      "model": "xgboost",
+      "accuracy": 0.76875,
+      "precision": 0.7721518987341772,
+      "recall": 0.7625,
+      "f1": 0.7672955974842768,
+      "roc_auc": 0.8507,
+      "pr_auc": 0.8543654689618766,
+      "cv_accuracy_mean": 0.73375,
+      "cv_accuracy_std": 0.009406198089557774,
+      "cv_f1_mean": 0.7376938415420013,
+      "cv_f1_std": 0.011916580973922515,
+      "cv_roc_auc_mean": 0.8178359374999999,
+      "cv_roc_auc_std": 0.013532407504078709
+    }
+  ],
+  "model_files": {
+    "logreg": "/home/dpratapa/Capstone/models/dna/nt/logreg.pkl",
+    "linear_svm_calibrated": "/home/dpratapa/Capstone/models/dna/nt/linear_svm_calibrated.pkl",
+    "random_forest": "/home/dpratapa/Capstone/models/dna/nt/random_forest.pkl",
+    "xgboost": "/home/dpratapa/Capstone/models/dna/nt/xgboost.pkl"
+  },
+  "timestamp": "2026-03-25T16:23:15.005318"
+}

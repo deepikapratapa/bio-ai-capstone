@@ -1,0 +1,6 @@
+paradigm,model,accuracy,f1_macro
+Baseline,xgboost,0.9237472766884532,
+CNN,sequence_cnn,0.9244186046511628,
+Hybrid,hybrid_cnn_feats,0.9563953488372092,
+ESM-2,linear_svm,0.9869281045751634,0.9890405140836176
+ProtBERT,linear_svm_calibrated,0.9912854030501088,0.9924099727112172

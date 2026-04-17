@@ -1,0 +1,33 @@
+{
+  "notebook": "17_dna_nt_embeddings",
+  "model": "InstaDeepAI/nucleotide-transformer-500m-human-ref",
+  "model_size": "500M parameters",
+  "pretrain_data": "human reference genome GRCh38",
+  "tokenizer_type": "6-mer k-mer tokenizer",
+  "pooling_strategy": "mean pooling over body tokens (CLS excluded, mask-weighted)",
+  "embedding_dim": 1280,
+  "n_sequences": 4000,
+  "label_counts": {
+    "0": 2000,
+    "1": 2000
+  },
+  "seq_length_bp": 200,
+  "max_token_length": 512,
+  "batch_size_used": 16,
+  "device": "cuda",
+  "seed": 42,
+  "embedding_stats": {
+    "mean": -0.0007795931887812912,
+    "std": 0.8256564736366272,
+    "min": -8.96045970916748,
+    "max": 17.628507614135742,
+    "any_nan": false,
+    "any_inf": false
+  },
+  "output_files": {
+    "embeddings": "/home/dpratapa/Capstone/data/processed/dna_nt_embeddings_len200_pos2000_neg2000.npy",
+    "labels": "/home/dpratapa/Capstone/data/processed/dna_nt_labels_len200_pos2000_neg2000.npy",
+    "ids": "/home/dpratapa/Capstone/data/processed/dna_nt_ids_len200_pos2000_neg2000.npy"
+  },
+  "timestamp": "2026-03-25T16:14:12.937966"
+}

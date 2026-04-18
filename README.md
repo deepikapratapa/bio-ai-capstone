@@ -1,326 +1,354 @@
-# 🧬 DNA & Protein Language Model Pipelines for Biological Sequence Analysis
+# 🧬 Bio-Seq LM — DNA & Protein Language Model Pipelines
 
-## 📌 Project Overview
+<div align="center">
 
-This project designs and evaluates machine learning pipelines for **biological sequence analysis** using both **DNA** and **protein** datasets.
+**Design and Evaluation of DNA & Protein Language Model Pipelines for Biological Sequence Analysis**
 
-The goal is to systematically compare multiple modeling paradigms:
+*M.S. Applied Data Science Capstone · University of Florida · Spring 2026*
 
-- 🧠 Classical machine learning with engineered biological features  
-- 🔬 Sequence-based deep learning models (CNNs)  
-- ⚙️ Hybrid architectures combining learned representations and domain features  
-- 🤖 Pretrained biological language models (ESM-2)
+[![Python](https://img.shields.io/badge/Python-3.11-3776AB?style=flat-square&logo=python&logoColor=white)](https://python.org)
+[![PyTorch](https://img.shields.io/badge/PyTorch-2.1-EE4C2C?style=flat-square&logo=pytorch&logoColor=white)](https://pytorch.org)
+[![HuggingFace](https://img.shields.io/badge/🤗-Transformers-FFD21E?style=flat-square)](https://huggingface.co)
+[![Streamlit](https://img.shields.io/badge/Streamlit-1.32-FF4B4B?style=flat-square&logo=streamlit&logoColor=white)](https://streamlit.io)
+[![HiPerGator](https://img.shields.io/badge/HPC-HiPerGator_A100-0021A5?style=flat-square)](https://www.rc.ufl.edu/about/hipergator/)
+[![License](https://img.shields.io/badge/License-MIT-green?style=flat-square)](LICENSE)
 
-Two biological prediction tasks are explored:
+[🚀 Live App](#-interactive-app--bio-seq-lm-explorer) · [📊 Results](#-results) · [📓 Notebooks](#-notebooks) · [🛠 Setup](#-setup)
 
-| Task | Description |
+</div>
+
+---
+
+## 📌 Overview
+
+Do large pretrained biological language models **consistently outperform engineered baselines** — or is their advantage task-dependent?
+
+This project answers that question through a rigorous, end-to-end comparison of **5 modeling paradigms** across **2 biological sequence tasks**:
+
+| Task | Data | Scale | Primary Metric |
+|------|------|-------|----------------|
+| 🧬 **DNA Promoter Classification** | Human GRCh38 · 200 bp sequences | 4,000 sequences (balanced) | ROC-AUC |
+| 🔬 **Protein Pfam Classification** | UniProt Swiss-Prot · 10 Pfam families | 2,293 sequences | Accuracy + F1-macro |
+
+---
+
+## 🏆 Results
+
+### DNA — Promoter vs Non-Promoter Classification
+
+| Paradigm | Best Model | Accuracy | ROC-AUC |
+|----------|-----------|----------|---------|
+| Baseline ML | Random Forest | 0.748 | 0.837 |
+| CNN | Seq-CNN | 0.750 | 0.826 |
+| Hybrid | CNN + features | 0.698 | 0.832 |
+| DNABERT-2 | XGBoost | 0.756 | 0.846 |
+| **NT-500M ★** | **XGBoost** | **0.769** | **0.851** |
+
+> **Key finding:** NT-500M/XGBoost achieves ROC-AUC 0.851 — only **+1.5 pts above Random Forest baseline**. Engineered CpG/GC features remain highly competitive for this task.
+
+### Protein — Pfam Family Classification
+
+| Paradigm | Best Model | Accuracy | F1-macro |
+|----------|-----------|----------|---------|
+| Baseline ML | Random Forest | 0.923 | 0.924 |
+| CNN | Seq-CNN | 0.924 | 0.925 |
+| Hybrid | CNN + features | 0.956 | 0.957 |
+| ESM-2 | Linear SVM | 0.987 | 0.989 |
+| **ProtBERT ★** | **Linear SVM** | **0.991** | **0.992** |
+
+> **Key finding:** ProtBERT/Linear SVM achieves **99.1% accuracy — +7 pts over Hybrid**. Pfam families are linearly separable in UniRef100 pretrained embedding space.
+
+---
+
+## 🖥️ Interactive App — Bio-Seq LM Explorer
+
+A full-featured Streamlit application for real-time biological sequence analysis — no retraining required.
+
+> 🎬 **[Video Demo](#)** *(link coming soon)*
+
+### App Features
+
+| Tab | Description |
 |-----|-------------|
-| **DNA Promoter Classification** | Detect promoter vs non-promoter regions in genomic DNA sequences |
-| **Protein Family Classification** | Predict protein functional family from amino acid sequences |
+| 🧬 **DNA Classification** | Classify any 200 bp sequence across 5 paradigms simultaneously. Includes in-silico mutagenesis and embedding space visualization |
+| 🔬 **Protein Classification** | Pfam family prediction across 5 paradigms with alanine scanning and top-3 family confidence |
+| 🔍 **Sequence Similarity** | Cosine similarity search in transformer embedding space (DNABERT-2, NT-500M, ESM-2, ProtBERT) |
+| 🌌 **Embedding Explorer** | Interactive PCA of 4,000 DNA and 2,293 protein sequences — hover to inspect |
+| ✂️ **Sequence Clustering** | Unsupervised KMeans clustering of 2–10 sequences in feature space with pairwise similarity heatmap |
+| 📊 **Results Dashboard** | Full paradigm comparison with charts and key findings narrative |
 
-The project evaluates whether **deep learning and foundation models provide measurable improvement over strong classical baselines.**
+### App Screenshots
+
+<table>
+<tr>
+<td width="50%">
+
+**DNA Classification — Multi-paradigm predictions**
+![DNA Classification](docs/screenshots/app_dna_classification.png)
+
+</td>
+<td width="50%">
+
+**Protein Classification — Pfam family prediction**
+![Protein Classification](docs/screenshots/app_protein_classification.png)
+
+</td>
+</tr>
+<tr>
+<td width="50%">
+
+**In-Silico Mutagenesis — Per-nucleotide sensitivity**
+![Mutagenesis](docs/screenshots/app_mutagenesis.png)
+
+</td>
+<td width="50%">
+
+**Embedding Explorer — ESM-2 & ProtBERT PCA**
+![Embedding Explorer](docs/screenshots/app_embedding_explorer.png)
+
+</td>
+</tr>
+<tr>
+<td width="50%">
+
+**Sequence Similarity Search — Nearest neighbours in LM space**
+![Similarity Search](docs/screenshots/app_similarity_search.png)
+
+</td>
+<td width="50%">
+
+**Results Dashboard — Full paradigm comparison**
+![Results Dashboard](docs/screenshots/app_results_dashboard.png)
+
+</td>
+</tr>
+</table>
 
 ---
-# 🧬 Project Pipeline
+## 🔬 Methodology
 
-```mermaid
-flowchart LR
-
-A[Raw Biological Data] --> B[Data Ingestion]
-
-B --> C1[DNA Dataset Processing]
-B --> C2[Protein Dataset Processing]
-
-C1 --> D1[DNA Feature Engineering]
-C2 --> D2[Protein Feature Engineering]
-
-D1 --> E1[Baseline ML Models]
-D2 --> E2[Baseline ML Models]
-
-C1 --> F1[DNA Sequence CNN]
-C2 --> F2[Protein Sequence CNN]
-
-F1 --> G1[Hybrid Model<br> CNN + Features]
-F2 --> G2[Hybrid Model<br> CNN + Features]
-
-C2 --> H1[ESM-2 Protein Language Model]
-H1 --> H2[Embedding Extraction]
-
-H2 --> I[ML Classifiers<br>LogReg / SVM / RF / XGBoost]
-
-E1 --> J[Evaluation]
-E2 --> J
-F1 --> J
-F2 --> J
-G1 --> J
-G2 --> J
-I --> J
-
-J --> K[Performance Comparison<br>ROC-AUC / PR-AUC / F1]
+```
+Raw Sequences (GRCh38 DNA · UniProt Protein)
+            │
+    ┌───────┴────────┐
+    ▼                ▼
+Feature Engineering  Transformer Embeddings
+95 DNA features      DNABERT-2 · NT-500M (DNA)
+176 Protein features ESM-2 · ProtBERT (Protein)
+    │                │
+    └───────┬────────┘
+            ▼
+  Downstream Classifiers
+  LR · SVM · RF · XGBoost
+            │
+            ▼
+  Evaluation & Comparison
+  ROC-AUC (DNA) | Accuracy + F1 (Protein)
 ```
 
-# 🧱 Repository Structure
+### Modeling Paradigms
+
+1. **Baseline ML** — Classical models (LR, SVM, RF, GBM, XGBoost) on engineered biological features
+2. **Sequence CNN** — 1D convolutional networks on one-hot encoded sequences; learns motifs automatically
+3. **Hybrid** — CNN sequence embeddings concatenated with engineered features
+4. **DNA LMs** — DNABERT-2 (117M params, BPE, 135-species) and NT-500M (500M params, GRCh38)
+5. **Protein LMs** — ESM-2 (35M params, 65M UR50D sequences) and ProtBERT (420M params, 217M UniRef100)
+
+### Feature Engineering
+
+**DNA (95 features):** GC content, CpG O/E ratio, k-mer frequencies (di/tri-nucleotide), Shannon entropy, homopolymer runs, dinucleotide composition
+
+**Protein (176 features):** CTD descriptors, PseAAC, reduced alphabet dipeptides, amino acid composition, physicochemical properties (GRAVY, instability, aromaticity)
+
+---
+
+## 📓 Notebooks
+
+| # | Notebook | Description |
+|---|----------|-------------|
+| 00 | `00_project_overview` | Project design, experiment plan, research question |
+| 01 | `01_protein_ingest` | UniProt Swiss-Prot data loading and curation |
+| 02 | `02_protein_eda` | Amino acid composition, length distributions, class balance |
+| 03 | `03_dna_ingest` | GRCh38 promoter/non-promoter extraction |
+| 04 | `04_dna_eda` | GC content, CpG analysis, sequence statistics |
+| 05 | `05_dna_baseline_features` | DNA feature engineering (95 features) |
+| 06 | `06_dna_baseline_models` | Classical ML baselines — RF achieves AUC 0.837 |
+| 07 | `07_dna_sequence_models` | 1D CNN on one-hot DNA — AUC 0.826 |
+| 08 | `08_dna_hybrid_model` | CNN + feature hybrid — AUC 0.832 |
+| 09 | `09_protein_baseline_features` | Protein feature engineering (176 features) |
+| 10 | `10_protein_baseline_models` | Classical ML baselines — RF accuracy 0.923 |
+| 11 | `11_protein_sequence_models` | CNN on amino acid sequences — accuracy 0.924 |
+| 12 | `12_protein_hybrid_model` | Hybrid CNN + features — accuracy 0.956 |
+| 13 | `13_protein_esm2_embeddings` | ESM-2 embedding extraction |
+| 14 | `14_protein_esm2_models` | Classifiers on ESM-2 — accuracy 0.987 |
+| 15 | `15_dna_dnabert2_embeddings` | DNABERT-2 embedding extraction on HiPerGator A100 |
+| 16 | `16_dna_dnabert2_models` | Classifiers on DNABERT-2 embeddings — AUC 0.846 |
+| 17 | `17_dna_nt_embeddings` | NT-500M embedding extraction |
+| 18 | `18_dna_nt_models` | Classifiers on NT-500M — AUC 0.851 ★ |
+| 19 | `19_protein_protbert_embeddings` | ProtBERT embedding extraction |
+| 20 | `20_protein_protbert_models` | Classifiers on ProtBERT — accuracy 0.991 ★ |
+| 21 | `21_final_comparison` | Full cross-paradigm comparison and visualizations |
+
+---
+
+## 🗂️ Repository Structure
+
 ```
-Capstone/
+bio-ai-capstone/
 │
-├── app/                     # Future application or deployment interface
+├── app/
+│   └── app-new.py               # Streamlit app — Bio-Seq LM Explorer
 │
-├── configs/                 # Experiment configuration files
-│   └── config.yaml
+├── configs/
+│   └── config.yaml              # Experiment configuration
 │
-├── data/                    # Biological datasets
-│   ├── raw/                 # Original downloaded datasets
-│   ├── interim/             # Intermediate processing files
-│   └── processed/           # Clean datasets used for modeling
+├── data/
+│   ├── raw/                     # Original downloaded datasets
+│   ├── interim/                 # Intermediate processing files
+│   └── processed/               # Clean datasets used for modeling
+│       ├── dna_promoter_vs_nonpromoter_len200_pos2000_neg2000.csv
+│       ├── protein_uniprot_pfam_top10_per400.csv
+│       └── protein_esm2_embeddings_top10_per400.npy
 │
-├── models/                  # Saved trained models
-│   ├── dna/                 # DNA promoter classification models
-│   │   ├── baselines
-│   │   ├── sequence_cnn
-│   │   └── hybrid
-│   │
-│   └── protein/             # Protein classification models
-│       ├── baselines
-│       ├── sequence_cnn
-│       ├── hybrid_cnn_feats
-│       └── esm2
+├── docs/
+│   ├── screenshots/             # Streamlit app screenshots
+│   ├── poster/                  # Capstone poster (PDF)
+│   └── presentation/            # Final presentation slides
 │
-├── notebooks/               # Main experiment workflow
-│   ├── 00_project_overview.ipynb
-│   ├── 01_protein_ingest.ipynb
-│   ├── 02_protein_eda.ipynb
-│   ├── 03_dna_ingest.ipynb
-│   ├── 04_dna_eda.ipynb
-│   ├── 05_dna_baseline_features.ipynb
-│   ├── 06_dna_baseline_models.ipynb
-│   ├── 07_dna_sequence_models.ipynb
-│   ├── 08_dna_hybrid_model.ipynb
-│   ├── 09_protein_baseline_features.ipynb
-│   ├── 10_protein_baseline_models.ipynb
-│   ├── 11_protein_sequence_models.ipynb
-│   ├── 12_protein_hybrid_model.ipynb
-│   ├── 13_protein_esm2_embeddings.ipynb
-│   └── 14_protein_esm2_models.ipynb
+├── models/
+│   ├── dna/                     # Trained DNA models
+│   │   ├── baselines/
+│   │   ├── sequence_cnn/
+│   │   └── hybrid/
+│   └── protein/                 # Trained protein models
+│       ├── baselines/
+│       ├── sequence_cnn/
+│       ├── hybrid_cnn_feats/
+│       └── esm2/
 │
-├── reports/                 # Experiment outputs and evaluation summaries
-│   └── figures/             # Visualizations (ROC curves, confusion matrices)
+├── notebooks/                   # NB00–NB21 full experiment pipeline
+├── reports/                     # CSVs, JSONs with all experimental results
+├── scripts/                     # Utility scripts
+├── src/                         # Reusable source code
+│   ├── common/
+│   ├── dna/
+│   └── protein/
 │
-├── scripts/                 # Utility scripts for processing or training
-│
-└── src/                     # Reusable project code
-├── common
-├── dna
-└── protein
+├── environment.yml              # Conda environment
+├── requirements.txt             # Pip requirements
+└── README.md
 ```
----
-# 📁 Key Files
-
-Important outputs produced by the modeling pipeline include:
-
-| File | Location | Description |
-|-----|-----|-----|
-| `dna_promoter_vs_nonpromoter_len200_pos2000_neg2000.csv` | data/processed | Processed dataset used for DNA promoter classification |
-| `protein_uniprot_pfam_top10_per400.csv` | data/processed | Dataset used for protein family classification |
-| `protein_esm2_embeddings_top10_per400.npy` | data/processed | Protein embeddings generated using the ESM-2 model |
-| `cnn_len200.pt` | models/dna/sequence_cnn | Trained DNA sequence CNN |
-| `cnn_top10_per400.pt` | models/protein/sequence_cnn | Trained protein sequence CNN |
-
----
-# 🔬 Project Workflow
-
-The project follows a structured machine learning workflow.
-
-### 1️⃣ Data Ingestion
-Raw datasets are collected and curated from genomic annotations and protein databases.
-
-- DNA promoter sequences extracted from genome annotations  
-- Protein sequences curated from UniProt datasets  
 
 ---
 
-### 2️⃣ Exploratory Data Analysis (EDA)
+## 🛠 Setup
 
-EDA is used to validate data quality and biological signal.
+### Prerequisites
 
-Key analyses include:
+- Python 3.11
+- CUDA-capable GPU (A100 recommended for transformer embedding extraction)
+- conda
 
-- Sequence length distributions  
-- GC content and CpG density (DNA)  
-- Amino acid composition (protein)  
-- Feature distributions  
-- Class balance analysis  
+### Installation
 
----
+```bash
+# Clone the repository
+git clone https://github.com/deepikapratapa/bio-ai-capstone.git
+cd bio-ai-capstone
 
-### 3️⃣ Feature Engineering
+# Create conda environment
+conda env create -f environment.yml
+conda activate bio-seq-lm
 
-Biologically meaningful features are extracted from sequences.
+# Or pip install
+pip install -r requirements.txt
+```
 
-#### DNA Features
-- GC content
-- CpG density
-- k-mer frequencies
-- sequence composition statistics
+### Running the Streamlit App
 
-#### Protein Features
-- amino acid composition
-- physicochemical properties
-- sequence length statistics
+```bash
+cd app
+streamlit run app-new.py
+```
 
-These features form the basis for **baseline machine learning models**.
+> **Note:** Transformer embeddings are pre-extracted and cached as `.npy` arrays. The app runs inference using pre-trained classifiers — no GPU required for the app itself.
 
----
+### Running Notebooks
 
-# 🤖 Modeling Approaches
+Notebooks are designed to run on **UF HiPerGator** with SLURM + NVIDIA A100 GPUs. For local runs, a CUDA-capable GPU is needed for notebooks 15–20 (transformer embedding extraction). Notebooks 00–14 run on CPU.
 
-The project compares four model families.
-
----
-
-## 1️⃣ Feature-Based Baselines
-
-Traditional ML models trained on engineered biological features.
-
-Models evaluated:
-
-- Logistic Regression  
-- Linear SVM  
-- Random Forest  
-- Gradient Boosting  
-- XGBoost  
-
-These models establish the **baseline performance floor**.
+```bash
+# On HiPerGator
+cd /home/dpratapa/Capstone
+jupyter lab --no-browser --port=8888
+```
 
 ---
 
-## 2️⃣ Sequence CNN Models
+## 🔑 Key Takeaways
 
-Deep learning models trained directly on biological sequences.
+1. **Transformer models dramatically improve protein classification** — ProtBERT achieves +7 pp accuracy over the hybrid model. Pfam families are already linearly separable in UniRef100 pretrained embedding space.
 
-Architecture includes:
+2. **DNA classification is driven by biological features** — GC content and CpG density remain the most discriminative signals. NT-500M adds only +1.5 pp ROC-AUC over Random Forest.
 
-- One-hot sequence encoding  
-- 1D convolutional filters for motif detection  
-- pooling layers  
-- dense classification layers  
+3. **Protein embedding spaces are highly separable** — PCA of ESM-2 and ProtBERT embeddings shows tight, well-separated clusters for all 10 Pfam families.
 
-These models automatically learn **sequence motifs and biological patterns**.
+4. **Interpretability reveals biologically meaningful signals** — In-silico mutagenesis identifies position-specific nucleotide sensitivity; alanine scanning pinpoints critical residues for family identity.
 
----
-
-## 3️⃣ Hybrid Models
-
-Hybrid models combine:
-
-- CNN sequence embeddings  
-- engineered biological features  
-
-This approach evaluates whether **combining domain knowledge with learned representations improves predictive performance**.
+5. **The unified pipeline generalizes** — The app classifies any unseen DNA or protein sequence across all paradigms without retraining.
 
 ---
 
-## 4️⃣ Biological Language Models
+## 📊 Evaluation Metrics
 
-Pretrained biological language models are used to generate sequence embeddings that capture complex biological patterns learned from large-scale sequence datasets.
-
-### DNA Language Models
-
-For genomic sequences, embeddings are generated using **DNABERT / Nucleotide Transformer models** trained on large genomic corpora.
-
-These models learn contextual nucleotide representations that capture promoter signals and regulatory sequence patterns.
-
-Workflow:
-
-DNA sequence → DNA language model embedding → ML classifier
+| Metric | Task | Purpose |
+|--------|------|---------|
+| ROC-AUC | DNA | Primary metric; classification separability under class balance |
+| PR-AUC | DNA | Performance robustness |
+| Accuracy | Protein | Primary metric; 10-class balanced evaluation |
+| F1-macro | Protein | Balanced per-class performance |
+| 5-fold CV | Both | Robust generalization estimate |
 
 ---
 
-### Protein Language Models
+## 🖥️ Infrastructure
 
-For protein sequences, embeddings are generated using **ESM-2**, a pretrained transformer trained on millions of protein sequences.
-
-Workflow:
-
-Protein sequence → ESM-2 embedding → ML classifier
-
----
-
-### Classifiers Trained on Embeddings
-
-The extracted embeddings are used as input features for classical machine learning classifiers:
-
-- Logistic Regression  
-- Support Vector Machine (SVM)  
-- Random Forest  
-- XGBoost  
-
-This allows evaluation of whether **foundation model embeddings improve biological sequence classification performance compared to handcrafted features and CNN models.**
----
-
-# 📓 Notebooks Overview
-
-The project notebooks follow a structured experimental pipeline.
-
-| Notebook | Purpose |
-|--------|--------|
-| `00_project_overview` | Project design and experiment planning |
-| `01_protein_ingest` | Load and preprocess protein datasets |
-| `02_protein_eda` | Protein exploratory analysis |
-| `03_dna_ingest` | Load genomic promoter datasets |
-| `04_dna_eda` | DNA sequence exploratory analysis |
-| `05_dna_baseline_features` | DNA feature engineering |
-| `06_dna_baseline_models` | Classical ML baselines |
-| `07_dna_sequence_models` | CNN models for DNA |
-| `08_dna_hybrid_model` | Hybrid CNN + features |
-| `09_protein_baseline_features` | Protein feature engineering |
-| `10_protein_baseline_models` | Classical ML baselines |
-| `11_protein_sequence_models` | CNN models for protein |
-| `12_protein_hybrid_model` | Hybrid protein model |
-| `13_protein_esm2_embeddings` | Extract ESM-2 embeddings |
-| `14_protein_esm2_models` | Train classifiers on embeddings |
+| Component | Details |
+|-----------|---------|
+| HPC Cluster | UF HiPerGator |
+| GPU | NVIDIA A100 (40 GB VRAM) |
+| Scheduler | SLURM |
+| Environment | Python 3.11 · PyTorch 2.1 · HuggingFace Transformers 4.1 · scikit-learn 1.3 · Streamlit 1.32 |
+| Reproducibility | All random seeds fixed (seed=42); transformer embeddings pre-extracted and cached |
 
 ---
 
-# 📊 Evaluation Metrics
+## 📚 References
 
-Model performance is evaluated using multiple metrics:
-
-| Metric | Purpose |
-|------|--------|
-| Accuracy | Overall classification performance |
-| Precision | Correct positive predictions |
-| Recall | Ability to capture true positives |
-| F1 Score | Balanced precision-recall metric |
-| ROC-AUC | Classification separability |
-| PR-AUC | Performance under class imbalance |
+1. Ji et al. (2023). DNABERT-2: Efficient Foundation Model and Benchmark for Multi-Species Genome. *arXiv:2306.15006*
+2. Dalla-Torre et al. (2023). The Nucleotide Transformer. *bioRxiv*
+3. Elnaggar et al. (2021). ProtTrans: Cracking the Language of Life Code Through Self-Supervised Learning. *IEEE TPAMI*
+4. Lin et al. (2023). Evolutionary-scale prediction of atomic-level protein structure with a language model. *Science 379(6637)*
+5. Pedregosa et al. (2011). Scikit-learn: Machine Learning in Python. *JMLR 12:2825–2830*
+6. Wolf et al. (2020). HuggingFace's Transformers: State-of-the-art NLP. *arXiv:1910.03771*
 
 ---
 
-# 🧭 How to Navigate This Repository
+## 👥 Team
 
-To explore the project:
+| Role | Name | Contact |
+|------|------|---------|
+| **Author** | Deepika Sarala Pratapa | [dpratapa@ufl.edu](mailto:dpratapa@ufl.edu) |
+| **Faculty Advisor** | Dr. Matthew Gitzendanner | [magitz@ufl.edu](mailto:magitz@ufl.edu) |
+| **Instructor** | Edwin Marte Zorrilla | UF MADS |
 
-1️⃣ Start with **`notebooks/`** to follow the full analysis pipeline  
-2️⃣ Review **`reports/`** for experiment outputs and summaries  
-3️⃣ Inspect **`models/`** for saved trained models  
-4️⃣ Explore **`src/`** for reusable modeling code  
-5️⃣ Check **`data/`** for dataset organization
+**M.S. Applied Data Science · University of Florida · 2026**
 
----
-
-# 👥 Collaborators
-
-Instructor  
-**Edwin Marte Zorrilla**
-
-Advisor  
-**Matt Gitzendanner**
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-0A66C2?style=flat-square&logo=linkedin)](https://linkedin.com/in/deepikapratapa)
+[![GitHub](https://img.shields.io/badge/GitHub-deepikapratapa-181717?style=flat-square&logo=github)](https://github.com/deepikapratapa)
 
 ---
 
-# 👩‍💻 Author
-
-**Deepika Sarala Pratapa**  
-M.S. Applied Data Science  
-University of Florida
-📧 [dpratapa@ufl.edu](mailto:dpratapa@ufl.edu) 
+<div align="center">
+<sub>Trained and deployed on UF HiPerGator HPC · NVIDIA A100 GPUs · SLURM scheduler · 40 GB VRAM</sub>
+</div>

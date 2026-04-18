@@ -64,7 +64,7 @@ This project answers that question through a rigorous, end-to-end comparison of 
 
 A full-featured Streamlit application for real-time biological sequence analysis — no retraining required.
 
-> 🎬 **[Video Demo](#)** *(link coming soon)*
+> 🎬 **[Video Demo](https://drive.google.com/drive/folders/1_e-JD7NuzYQWnCyiY3f02vL_0UVEKG72)** *(link coming soon)*
 
 ### App Features
 
@@ -279,7 +279,7 @@ Notebooks are designed to run on **UF HiPerGator** with SLURM + NVIDIA A100 GPUs
 
 ```bash
 # On HiPerGator
-cd /home/dpratapa/Capstone
+cd /home/<username>/Capstone
 jupyter lab --no-browser --port=8888
 ```
 
@@ -339,12 +339,12 @@ jupyter lab --no-browser --port=8888
 | Role | Name | Contact |
 |------|------|---------|
 | **Author** | Deepika Sarala Pratapa | [dpratapa@ufl.edu](mailto:dpratapa@ufl.edu) |
-| **Faculty Advisor** | Dr. Matthew Gitzendanner | [magitz@ufl.edu](mailto:magitz@ufl.edu) |
-| **Instructor** | Edwin Marte Zorrilla | UF MADS |
+| **Faculty Advisor** | Matt Gitzendanner | [magitz@ufl.edu](mailto:magitz@ufl.edu) |
+| **Instructor** | Edwin Marte Zorrilla | [emartezorrilla@ufl.edu](mailto:emartezorrilla@ufl.edu) |
 
 **M.S. Applied Data Science · University of Florida · 2026**
 
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-0A66C2?style=flat-square&logo=linkedin)](https://linkedin.com/in/deepikapratapa)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-0A66C2?style=flat-square&logo=linkedin)](https://linkedin.com/in/deepika-sarala-pratapa-3b8a29232)
 [![GitHub](https://img.shields.io/badge/GitHub-deepikapratapa-181717?style=flat-square&logo=github)](https://github.com/deepikapratapa)
 
 ---

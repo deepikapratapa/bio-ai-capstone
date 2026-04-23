@@ -12,8 +12,9 @@
 [![Streamlit](https://img.shields.io/badge/Streamlit-1.32-FF4B4B?style=flat-square&logo=streamlit&logoColor=white)](https://streamlit.io)
 [![HiPerGator](https://img.shields.io/badge/HPC-HiPerGator_A100-0021A5?style=flat-square)](https://www.rc.ufl.edu/about/hipergator/)
 [![License](https://img.shields.io/badge/License-MIT-green?style=flat-square)](LICENSE)
+[![Live App](https://img.shields.io/badge/🧬_Live_App-HuggingFace_Spaces-FFD21E?style=flat-square)](https://huggingface.co/spaces/dpratapa/bio-seq-lm-explorer)
 
-[📊 Results](#-results) · [📓 Notebooks](#-notebooks) · [🛠 Setup](#-setup) · [🖥️ App](#️-interactive-app--bio-seq-lm-explorer)
+[🚀 Live App](https://huggingface.co/spaces/dpratapa/bio-seq-lm-explorer) · [📊 Results](#-results) · [📓 Notebooks](#-notebooks) · [🛠 Setup](#-setup) · [🖥️ App](#️-interactive-app--bio-seq-lm-explorer)
 
 </div>
 
@@ -64,9 +65,10 @@ This project answers that question through a rigorous, end-to-end comparison of 
 
 A full-featured Streamlit application for real-time biological sequence analysis — no retraining required. No GPU needed to run the app; all transformer embeddings are pre-extracted and cached as `.npy` files.
 
+**🚀 [Launch Live App → huggingface.co/spaces/dpratapa/bio-seq-lm-explorer](https://huggingface.co/spaces/dpratapa/bio-seq-lm-explorer)**
+
 ### 🎬 Demo Video
 
-<!-- Replace the image below with your demo video thumbnail once available -->
 > 🎬 **[Video Demo](https://drive.google.com/drive/folders/1_e-JD7NuzYQWnCyiY3f02vL_0UVEKG72)**
 [![Demo Video Thumbnail](docs/screenshots/demo_thumbnail.png)](#)
 
@@ -217,13 +219,14 @@ pip install -r requirements.txt
 `requirements.txt` contains:
 ```
 streamlit>=1.32.0
-numpy
+numpy==1.26.4
 pandas
 scikit-learn
 joblib
-plotly
+plotly==5.18.0
 matplotlib
 biopython
+xgboost
 ```
 
 ### Running the Streamlit App
@@ -372,7 +375,7 @@ pip install biopython
 
 **`ModuleNotFoundError: No module named 'plotly'`**
 ```bash
-pip install plotly
+pip install plotly==5.18.0
 ```
 
 **App embedding plots are blank (PCA tabs show nothing)**

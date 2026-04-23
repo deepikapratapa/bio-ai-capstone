@@ -13,7 +13,7 @@
 [![HiPerGator](https://img.shields.io/badge/HPC-HiPerGator_A100-0021A5?style=flat-square)](https://www.rc.ufl.edu/about/hipergator/)
 [![License](https://img.shields.io/badge/License-MIT-green?style=flat-square)](LICENSE)
 
-[🚀 Live App](#-interactive-app--bio-seq-lm-explorer) · [📊 Results](#-results) · [📓 Notebooks](#-notebooks) · [🛠 Setup](#-setup)
+[📊 Results](#-results) · [📓 Notebooks](#-notebooks) · [🛠 Setup](#-setup) · [🖥️ App](#️-interactive-app--bio-seq-lm-explorer)
 
 </div>
 
@@ -62,9 +62,13 @@ This project answers that question through a rigorous, end-to-end comparison of 
 
 ## 🖥️ Interactive App — Bio-Seq LM Explorer
 
-A full-featured Streamlit application for real-time biological sequence analysis — no retraining required.
+A full-featured Streamlit application for real-time biological sequence analysis — no retraining required. No GPU needed to run the app; all transformer embeddings are pre-extracted and cached as `.npy` files.
 
-> 🎬 **[Video Demo](https://drive.google.com/drive/folders/1_e-JD7NuzYQWnCyiY3f02vL_0UVEKG72)** *(link coming soon)*
+### 🎬 Demo Video
+
+<!-- Replace the image below with your demo video thumbnail once available -->
+> 🎬 **[Video Demo](https://drive.google.com/drive/folders/1_e-JD7NuzYQWnCyiY3f02vL_0UVEKG72)**
+[![Demo Video Thumbnail](docs/screenshots/demo_thumbnail.png)](#)
 
 ### App Features
 
@@ -73,58 +77,20 @@ A full-featured Streamlit application for real-time biological sequence analysis
 | 🧬 **DNA Classification** | Classify any 200 bp sequence across 5 paradigms simultaneously. Includes in-silico mutagenesis and embedding space visualization |
 | 🔬 **Protein Classification** | Pfam family prediction across 5 paradigms with alanine scanning and top-3 family confidence |
 | 🔍 **Sequence Similarity** | Cosine similarity search in transformer embedding space (DNABERT-2, NT-500M, ESM-2, ProtBERT) |
-| 🌌 **Embedding Explorer** | Interactive PCA of 4,000 DNA and 2,293 protein sequences — hover to inspect |
-| ✂️ **Sequence Clustering** | Unsupervised KMeans clustering of 2–10 sequences in feature space with pairwise similarity heatmap |
-| 📊 **Results Dashboard** | Full paradigm comparison with charts and key findings narrative |
+| 🌐 **Embedding Explorer** | Interactive PCA of 4,000 DNA and 2,293 protein sequences — hover to inspect any point |
+| 🧪 **Sequence Clustering** | Unsupervised KMeans clustering of 2–10 sequences in feature space with pairwise similarity heatmap |
+| 📊 **Results Dashboard** | Full paradigm comparison with interactive Plotly charts and key findings narrative |
 
 ### App Screenshots
 
-<table>
-<tr>
-<td width="50%">
-
-**DNA Classification — Multi-paradigm predictions**
-![DNA Classification](docs/screenshots/app_dna_classification.png)
-
-</td>
-<td width="50%">
-
-**Protein Classification — Pfam family prediction**
-![Protein Classification](docs/screenshots/app_protein_classification.png)
-
-</td>
-</tr>
-<tr>
-<td width="50%">
-
-**In-Silico Mutagenesis — Per-nucleotide sensitivity**
-![Mutagenesis](docs/screenshots/app_mutagenesis.png)
-
-</td>
-<td width="50%">
-
-**Embedding Explorer — ESM-2 & ProtBERT PCA**
-![Embedding Explorer](docs/screenshots/app_embedding_explorer.png)
-
-</td>
-</tr>
-<tr>
-<td width="50%">
-
-**Sequence Similarity Search — Nearest neighbours in LM space**
-![Similarity Search](docs/screenshots/app_similarity_search.png)
-
-</td>
-<td width="50%">
-
-**Results Dashboard — Full paradigm comparison**
-![Results Dashboard](docs/screenshots/app_results_dashboard.png)
-
-</td>
-</tr>
-</table>
+| | |
+|--|--|
+| ![DNA Classification](docs/screenshots/app_dna_classification.png) **DNA Classification** | ![Protein Classification](docs/screenshots/app_protein_classification.png) **Protein Classification** |
+| ![Mutagenesis](docs/screenshots/app_mutagenesis.png) **In-Silico Mutagenesis** | ![Embedding Explorer](docs/screenshots/app_embedding_explorer.png) **Embedding Explorer** |
+| ![Similarity Search](docs/screenshots/app_similarity_search.png) **Sequence Similarity** | ![Results Dashboard](docs/screenshots/app_results_dashboard.png) **Results Dashboard** |
 
 ---
+
 ## 🔬 Methodology
 
 ```
@@ -149,45 +115,16 @@ Feature Engineering  Transformer Embeddings
 ### Modeling Paradigms
 
 1. **Baseline ML** — Classical models (LR, SVM, RF, GBM, XGBoost) on engineered biological features
-2. **Sequence CNN** — 1D convolutional networks on one-hot encoded sequences; learns motifs automatically
+2. **Sequence CNN** — 1D convolutional networks on one-hot encoded sequences
 3. **Hybrid** — CNN sequence embeddings concatenated with engineered features
 4. **DNA LMs** — DNABERT-2 (117M params, BPE, 135-species) and NT-500M (500M params, GRCh38)
-5. **Protein LMs** — ESM-2 (35M params, 65M UR50D sequences) and ProtBERT (420M params, 217M UniRef100)
+5. **Protein LMs** — ESM-2 (35M params, UR50D) and ProtBERT (420M params, UniRef100)
 
 ### Feature Engineering
 
 **DNA (95 features):** GC content, CpG O/E ratio, k-mer frequencies (di/tri-nucleotide), Shannon entropy, homopolymer runs, dinucleotide composition
 
-**Protein (176 features):** CTD descriptors, PseAAC, reduced alphabet dipeptides, amino acid composition, physicochemical properties (GRAVY, instability, aromaticity)
-
----
-
-## 📓 Notebooks
-
-| # | Notebook | Description |
-|---|----------|-------------|
-| 00 | `00_project_overview` | Project design, experiment plan, research question |
-| 01 | `01_protein_ingest` | UniProt Swiss-Prot data loading and curation |
-| 02 | `02_protein_eda` | Amino acid composition, length distributions, class balance |
-| 03 | `03_dna_ingest` | GRCh38 promoter/non-promoter extraction |
-| 04 | `04_dna_eda` | GC content, CpG analysis, sequence statistics |
-| 05 | `05_dna_baseline_features` | DNA feature engineering (95 features) |
-| 06 | `06_dna_baseline_models` | Classical ML baselines — RF achieves AUC 0.837 |
-| 07 | `07_dna_sequence_models` | 1D CNN on one-hot DNA — AUC 0.826 |
-| 08 | `08_dna_hybrid_model` | CNN + feature hybrid — AUC 0.832 |
-| 09 | `09_protein_baseline_features` | Protein feature engineering (176 features) |
-| 10 | `10_protein_baseline_models` | Classical ML baselines — RF accuracy 0.923 |
-| 11 | `11_protein_sequence_models` | CNN on amino acid sequences — accuracy 0.924 |
-| 12 | `12_protein_hybrid_model` | Hybrid CNN + features — accuracy 0.956 |
-| 13 | `13_protein_esm2_embeddings` | ESM-2 embedding extraction |
-| 14 | `14_protein_esm2_models` | Classifiers on ESM-2 — accuracy 0.987 |
-| 15 | `15_dna_dnabert2_embeddings` | DNABERT-2 embedding extraction on HiPerGator A100 |
-| 16 | `16_dna_dnabert2_models` | Classifiers on DNABERT-2 embeddings — AUC 0.846 |
-| 17 | `17_dna_nt_embeddings` | NT-500M embedding extraction |
-| 18 | `18_dna_nt_models` | Classifiers on NT-500M — AUC 0.851 ★ |
-| 19 | `19_protein_protbert_embeddings` | ProtBERT embedding extraction |
-| 20 | `20_protein_protbert_models` | Classifiers on ProtBERT — accuracy 0.991 ★ |
-| 21 | `21_final_comparison` | Full cross-paradigm comparison and visualizations |
+**Protein (176 features):** CTD descriptors, PseAAC, reduced-alphabet dipeptides, amino acid composition, physicochemical properties (GRAVY, instability, aromaticity, isoelectric point)
 
 ---
 
@@ -197,45 +134,48 @@ Feature Engineering  Transformer Embeddings
 bio-ai-capstone/
 │
 ├── app/
-│   └── app-new.py               # Streamlit app — Bio-Seq LM Explorer
+│   └── app.py                   # Streamlit app — Bio-Seq LM Explorer
 │
 ├── configs/
 │   └── config.yaml              # Experiment configuration
 │
 ├── data/
-│   ├── raw/                     # Original downloaded datasets
-│   ├── interim/                 # Intermediate processing files
-│   └── processed/               # Clean datasets used for modeling
+│   └── processed/               # Preprocessed datasets and cached embeddings
 │       ├── dna_promoter_vs_nonpromoter_len200_pos2000_neg2000.csv
+│       ├── dna_dnabert2_embeddings_len200_pos2000_neg2000.npy
+│       ├── dna_dnabert2_labels_len200_pos2000_neg2000.npy
+│       ├── dna_dnabert2_ids_len200_pos2000_neg2000.npy
+│       ├── dna_nt_embeddings_len200_pos2000_neg2000.npy
+│       ├── dna_nt_labels_len200_pos2000_neg2000.npy
+│       ├── dna_nt_ids_len200_pos2000_neg2000.npy
 │       ├── protein_uniprot_pfam_top10_per400.csv
-│       └── protein_esm2_embeddings_top10_per400.npy
+│       ├── protein_esm2_embeddings_top10_per400.npy
+│       ├── protein_esm2_labels_top10_per400.npy
+│       ├── protein_protbert_embeddings_top10_per400.npy
+│       └── protein_protbert_labels_top10_per400.npy
 │
 ├── docs/
-│   ├── screenshots/             # Streamlit app screenshots
-│   ├── poster/                  # Capstone poster (PDF)
-│   └── presentation/            # Final presentation slides
+│   ├── screenshots/             # App screenshots
+│   └── poster/                  # Capstone poster (PDF)
 │
 ├── models/
-│   ├── dna/                     # Trained DNA models
-│   │   ├── baselines/
-│   │   ├── sequence_cnn/
-│   │   └── hybrid/
-│   └── protein/                 # Trained protein models
-│       ├── baselines/
-│       ├── sequence_cnn/
-│       ├── hybrid_cnn_feats/
-│       └── esm2/
-│
-├── notebooks/                   # NB00–NB21 full experiment pipeline
-├── reports/                     # CSVs, JSONs with all experimental results
-├── scripts/                     # Utility scripts
-├── src/                         # Reusable source code
-│   ├── common/
 │   ├── dna/
+│   │   ├── baselines/           # logreg, random_forest, xgboost, linear_svm .pkl files
+│   │   ├── dnabert2/            # xgboost.pkl, linear_svm.pkl, etc.
+│   │   ├── nt/                  # xgboost.pkl, linear_svm.pkl, etc.
+│   │   ├── sequence_cnn/        # cnn_len200.pt
+│   │   └── hybrid/              # hybrid_len200.pt, feature_scaler.pkl
 │   └── protein/
+│       ├── baselines/           # logreg, random_forest, xgboost, linear_svm .pkl files
+│       ├── esm2/                # linear_svm_esm2.pkl, logreg_esm2.pkl, etc.
+│       ├── protbert/            # linear_svm_calibrated.pkl, etc.
+│       ├── sequence_cnn/        # cnn_top10_per400.pt
+│       └── hybrid_cnn_feats/    # hybrid_top10_per400.pt
 │
-├── environment.yml              # Conda environment
-├── requirements.txt             # Pip requirements
+├── notebooks/                   # NB00–NB21 full experiment pipeline (see table below)
+├── reports/                     # CSVs and JSONs with all experimental results
+├── environment.yml              # Full conda environment (HiPerGator / GPU systems)
+├── requirements.txt             # Minimal pip requirements (app only, no GPU needed)
 └── README.md
 ```
 
@@ -246,55 +186,144 @@ bio-ai-capstone/
 ### Prerequisites
 
 - Python 3.11
-- CUDA-capable GPU (A100 recommended for transformer embedding extraction)
-- conda
+- `conda` (recommended) or `pip`
+- **GPU required only for notebooks 15–20** (transformer embedding extraction). All other notebooks and the app itself run on CPU.
 
-### Installation
+### Option A — Full Conda Environment (recommended for running all notebooks)
+
+This installs PyTorch, HuggingFace Transformers, and all dependencies needed for embedding extraction. Designed for Linux/HiPerGator with CUDA.
 
 ```bash
-# Clone the repository
 git clone https://github.com/deepikapratapa/bio-ai-capstone.git
 cd bio-ai-capstone
 
-# Create conda environment
 conda env create -f environment.yml
 conda activate bio-seq-lm
+```
 
-# Or pip install
+> ⚠️ The `environment.yml` includes PyTorch with CUDA support. On a CPU-only machine, resolve may be slow. Use Option B if you only want to run the app.
+
+### Option B — Minimal pip install (app only, no GPU needed)
+
+All transformer embeddings are pre-extracted and committed to the repo as `.npy` files. The app loads these directly — no model download, no GPU required.
+
+```bash
+git clone https://github.com/deepikapratapa/bio-ai-capstone.git
+cd bio-ai-capstone
+
 pip install -r requirements.txt
+```
+
+`requirements.txt` contains:
+```
+streamlit>=1.32.0
+numpy
+pandas
+scikit-learn
+joblib
+plotly
+matplotlib
+biopython
 ```
 
 ### Running the Streamlit App
 
 ```bash
-cd app
-streamlit run app-new.py
+# From the repo root
+cd bio-ai-capstone
+streamlit run app/app.py
 ```
 
-> **Note:** Transformer embeddings are pre-extracted and cached as `.npy` arrays. The app runs inference using pre-trained classifiers — no GPU required for the app itself.
+The app will open at `http://localhost:8501`. All 6 tabs should load fully — classifiers are loaded from `models/` and embeddings from `data/processed/`.
 
 ### Running Notebooks
 
-Notebooks are designed to run on **UF HiPerGator** with SLURM + NVIDIA A100 GPUs. For local runs, a CUDA-capable GPU is needed for notebooks 15–20 (transformer embedding extraction). Notebooks 00–14 run on CPU.
+Notebooks NB00–NB14 (feature engineering, EDA, baseline models, CNN, hybrid) run on **CPU**. Notebooks NB15–NB20 (transformer embedding extraction) require a **CUDA-capable GPU** and are designed for UF HiPerGator.
 
 ```bash
-# On HiPerGator
-cd /home/<username>/Capstone
+# Activate the conda environment first
+conda activate bio-seq-lm
+
+# Start Jupyter
+jupyter lab
+```
+
+On **HiPerGator** (SLURM + A100 GPU):
+
+```bash
+# Request an interactive GPU session
+srun --partition=hpg-ai --ntasks=1 --cpus-per-task=4 --mem=32gb \
+     --gpus=a100:1 --time=04:00:00 --pty bash -i
+
+module load conda
+conda activate bio-seq-lm
+
+cd /path/to/bio-ai-capstone
 jupyter lab --no-browser --port=8888
 ```
+
+Then SSH tunnel from your local machine:
+```bash
+ssh -NL 8888:<compute_node_hostname>:8888 <username>@hpg.rc.ufl.edu
+```
+Open `http://localhost:8888` in your browser.
+
+### Notebook Execution Order
+
+Run notebooks sequentially. Each notebook saves its outputs (`.npy` embeddings, `.pkl` models, `.csv` results) which are consumed by later notebooks and by the app.
+
+```
+NB00 → NB01 → NB02 → NB03 → NB04          # Project setup, data ingest, EDA
+NB05 → NB06                                # DNA baseline features + models
+NB07 → NB08                                # DNA CNN + Hybrid
+NB09 → NB10                                # Protein baseline features + models
+NB11 → NB12                                # Protein CNN + Hybrid
+NB13 → NB14                                # ESM-2 embeddings + classifiers  [GPU]
+NB15 → NB16                                # DNABERT-2 embeddings + classifiers [GPU]
+NB17 → NB18                                # NT-500M embeddings + classifiers [GPU]
+NB19 → NB20                                # ProtBERT embeddings + classifiers [GPU]
+NB21                                       # Final cross-paradigm comparison
+```
+
+> **Note:** If you skip the GPU notebooks (NB13–NB20), the pre-extracted `.npy` embeddings already committed to this repo will allow NB16, NB18, NB20, and NB21 (classifier training + comparison) to run on CPU.
+
+---
+
+## 📓 Notebooks
+
+| # | Notebook | Description | GPU? |
+|---|----------|-------------|------|
+| 00 | `00_project_overview` | Project design, experiment plan, research question | No |
+| 01 | `01_protein_ingest` | UniProt Swiss-Prot data loading and curation | No |
+| 02 | `02_protein_eda` | Amino acid composition, length distributions, class balance | No |
+| 03 | `03_dna_ingest` | GRCh38 promoter/non-promoter extraction | No |
+| 04 | `04_dna_eda` | GC content, CpG analysis, sequence statistics | No |
+| 05 | `05_dna_baseline_features` | DNA feature engineering (95 features) | No |
+| 06 | `06_dna_baseline_models` | Classical ML baselines — RF achieves AUC 0.837 | No |
+| 07 | `07_dna_sequence_models` | 1D CNN on one-hot DNA — AUC 0.826 | No |
+| 08 | `08_dna_hybrid_model` | CNN + feature hybrid — AUC 0.832 | No |
+| 09 | `09_protein_baseline_features` | Protein feature engineering (176 features) | No |
+| 10 | `10_protein_baseline_models` | Classical ML baselines — RF accuracy 0.923 | No |
+| 11 | `11_protein_sequence_models` | CNN on amino acid sequences — accuracy 0.924 | No |
+| 12 | `12_protein_hybrid_model` | Hybrid CNN + features — accuracy 0.956 | No |
+| 13 | `13_protein_esm2_embeddings` | ESM-2 (35M) embedding extraction | **Yes** |
+| 14 | `14_protein_esm2_models` | Classifiers on ESM-2 embeddings — accuracy 0.987 | No |
+| 15 | `15_dna_dnabert2_embeddings` | DNABERT-2 embedding extraction | **Yes** |
+| 16 | `16_dna_dnabert2_models` | Classifiers on DNABERT-2 — AUC 0.846 | No |
+| 17 | `17_dna_nt_embeddings` | NT-500M embedding extraction | **Yes** |
+| 18 | `18_dna_nt_models` | Classifiers on NT-500M — AUC 0.851 ★ | No |
+| 19 | `19_protein_protbert_embeddings` | ProtBERT (420M) embedding extraction | **Yes** |
+| 20 | `20_protein_protbert_models` | Classifiers on ProtBERT — accuracy 0.991 ★ | No |
+| 21 | `21_final_comparison` | Full cross-paradigm comparison and visualizations | No |
 
 ---
 
 ## 🔑 Key Takeaways
 
-1. **Transformer models dramatically improve protein classification** — ProtBERT achieves +7 pp accuracy over the hybrid model. Pfam families are already linearly separable in UniRef100 pretrained embedding space.
-
+1. **Transformer models dramatically improve protein classification** — ProtBERT achieves +7 pp over the hybrid baseline. Pfam families are linearly separable in UniRef100 pretrained embedding space.
 2. **DNA classification is driven by biological features** — GC content and CpG density remain the most discriminative signals. NT-500M adds only +1.5 pp ROC-AUC over Random Forest.
-
-3. **Protein embedding spaces are highly separable** — PCA of ESM-2 and ProtBERT embeddings shows tight, well-separated clusters for all 10 Pfam families.
-
+3. **Protein embedding spaces are highly separable** — PCA of ESM-2 and ProtBERT embeddings shows tight, well-separated clusters for all 10 Pfam families, explaining why linear classifiers achieve 99.1% accuracy.
 4. **Interpretability reveals biologically meaningful signals** — In-silico mutagenesis identifies position-specific nucleotide sensitivity; alanine scanning pinpoints critical residues for family identity.
-
 5. **The unified pipeline generalizes** — The app classifies any unseen DNA or protein sequence across all paradigms without retraining.
 
 ---
@@ -303,11 +332,11 @@ jupyter lab --no-browser --port=8888
 
 | Metric | Task | Purpose |
 |--------|------|---------|
-| ROC-AUC | DNA | Primary metric; classification separability under class balance |
+| ROC-AUC | DNA | Primary metric; handles class imbalance |
 | PR-AUC | DNA | Performance robustness |
-| Accuracy | Protein | Primary metric; 10-class balanced evaluation |
-| F1-macro | Protein | Balanced per-class performance |
-| 5-fold CV | Both | Robust generalization estimate |
+| Accuracy | Protein | Primary metric; balanced 10-class evaluation |
+| F1-macro | Protein | Per-class performance without class bias |
+| 5-fold CV | Both | Generalization estimate |
 
 ---
 
@@ -318,8 +347,50 @@ jupyter lab --no-browser --port=8888
 | HPC Cluster | UF HiPerGator |
 | GPU | NVIDIA A100 (40 GB VRAM) |
 | Scheduler | SLURM |
-| Environment | Python 3.11 · PyTorch 2.1 · HuggingFace Transformers 4.1 · scikit-learn 1.3 · Streamlit 1.32 |
-| Reproducibility | All random seeds fixed (seed=42); transformer embeddings pre-extracted and cached |
+| Python | 3.11 |
+| PyTorch | 2.1 |
+| HuggingFace Transformers | 4.40+ |
+| scikit-learn | 1.3 |
+| Streamlit | 1.32+ |
+| Reproducibility | All random seeds fixed (`seed=42`); transformer embeddings pre-extracted and committed |
+
+---
+
+## ❓ Troubleshooting
+
+**App loads but all classifiers show "None" / no predictions**
+The `models/` directory may not have been cloned correctly. Verify:
+```bash
+ls models/dna/baselines/
+# Should show: logreg_len200.pkl, random_forest_len200.pkl, xgboost_len200.pkl, linear_svm_calibrated_len200.pkl
+```
+
+**`ModuleNotFoundError: No module named 'Bio'`**
+```bash
+pip install biopython
+```
+
+**`ModuleNotFoundError: No module named 'plotly'`**
+```bash
+pip install plotly
+```
+
+**App embedding plots are blank (PCA tabs show nothing)**
+The `.npy` embedding files must be present in `data/processed/`. Verify:
+```bash
+ls data/processed/*.npy
+```
+If missing, either run the relevant embedding notebook (GPU required) or re-clone the repo — they are committed.
+
+**Notebook kernel dies during embedding extraction (OOM)**
+Reduce batch size in the notebook config cell. Default is 32; try 8 or 16.
+
+**`conda env create` hangs on "Solving environment"**
+Use Option B (pip install) for the app. For notebooks, try:
+```bash
+conda env create -f environment.yml --no-deps
+pip install -r requirements.txt
+```
 
 ---
 
@@ -338,9 +409,9 @@ jupyter lab --no-browser --port=8888
 
 | Role | Name | Contact |
 |------|------|---------|
-| **Author** | Deepika Sarala Pratapa | [dpratapa@ufl.edu](mailto:dpratapa@ufl.edu) |
-| **Faculty Advisor** | Matt Gitzendanner | [magitz@ufl.edu](mailto:magitz@ufl.edu) |
-| **Instructor** | Edwin Marte Zorrilla | [emartezorrilla@ufl.edu](mailto:emartezorrilla@ufl.edu) |
+| **Author** | Deepika Sarala Pratapa | dpratapa@ufl.edu |
+| **Faculty Advisor** | Dr. Matthew Gitzendanner | magitz@ufl.edu |
+| **Instructor** | Edwin Marte Zorrilla | emartezorrilla@ufl.edu |
 
 **M.S. Applied Data Science · University of Florida · 2026**
 
@@ -350,5 +421,5 @@ jupyter lab --no-browser --port=8888
 ---
 
 <div align="center">
-<sub>Trained and deployed on UF HiPerGator HPC · NVIDIA A100 GPUs · SLURM scheduler · 40 GB VRAM</sub>
+<sub>Trained on UF HiPerGator HPC · NVIDIA A100 GPUs · SLURM scheduler · 40 GB VRAM</sub>
 </div>
